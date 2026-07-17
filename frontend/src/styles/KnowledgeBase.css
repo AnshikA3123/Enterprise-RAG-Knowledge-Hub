@@ -1,0 +1,161 @@
+.kb-page{
+    flex:1;
+    overflow-y:auto;
+    padding:30px;
+    animation:fade .35s ease;
+}
+
+.kb-header{
+    margin-bottom:28px;
+}
+
+.kb-header h2{
+    font-size:40px;
+    font-weight:700;
+    color:#fff;
+}
+
+.kb-header p{
+    margin-top:8px;
+    color:#9ba9c8;
+    font-size:17px;
+}
+
+.kb-departments{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:22px;
+    margin-bottom:30px;
+}
+
+.kb-department-card{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:22px;
+    border-radius:20px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(15px);
+    transition:.25s;
+}
+
+.kb-department-card:hover{
+    transform:translateY(-4px);
+    border-color:#4f9cff;
+}
+
+.kb-department-card svg{
+    font-size:42px;
+    color:#59b5ff;
+}
+
+.kb-department-card h3{
+    font-size:19px;
+    margin-bottom:4px;
+}
+
+.kb-department-card p{
+    color:#9aa8c8;
+}
+
+.kb-search{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:28px;
+    padding:15px 20px;
+    border-radius:18px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.kb-search svg{
+    color:#59b5ff;
+    font-size:22px;
+}
+
+.kb-search input{
+    flex:1;
+    background:none;
+    border:none;
+    outline:none;
+    color:white;
+    font-size:16px;
+}
+
+.kb-document-list{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.kb-document-card{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:22px;
+    border-radius:18px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+    transition:.25s;
+}
+
+.kb-document-card:hover{
+    border-color:#4f9cff;
+}
+
+.kb-document-left{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.kb-document-left svg{
+    font-size:30px;
+    color:#57b8ff;
+}
+
+.kb-document-left h3{
+    font-size:18px;
+    margin-bottom:4px;
+    color:white;
+}
+
+.kb-document-left p{
+    color:#98a6c8;
+}
+
+.kb-document-right{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    color:#d7dff8;
+    font-size:14px;
+}
+
+.kb-type{
+    padding:6px 12px;
+    border-radius:999px;
+    background:#1f3e6e;
+}
+
+.kb-status{
+    padding:6px 14px;
+    border-radius:999px;
+    background:#24404f;
+}
+
+.kb-status.indexed{
+    background:#1b6b4a;
+    color:#7df3b6;
+}
+
+.kb-loading{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100%;
+    font-size:22px;
+    color:white;
+}

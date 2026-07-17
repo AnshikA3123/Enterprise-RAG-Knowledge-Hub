@@ -5,6 +5,8 @@ import ChatBox from "./components/ChatBox";
 import ChatInput from "./components/ChatInput";
 import { sendChatMessage, checkSystemHealth } from "./services/api";
 import "./styles/App.css";
+import Dashboard from "./pages/Dashboard";
+import KnowledgeBase from "./pages/KnowledgeBase";
 import {
   getConversations,
   getConversationMessages,
@@ -150,9 +152,54 @@ function App() {
         />
 
         <main className="app-content">
-          <ChatBox messages={messages} isLoading={isLoading} onSuggestionClick={handleSend} />
-          <ChatInput onSend={handleSend} isLoading={isLoading} onClear={handleClear} hasMessages={messages.length > 0} />
-        </main>
+
+  {activeView === "dashboard" && (
+    <Dashboard />
+  )}
+
+  {activeView === "chat" && (
+    <>
+      <ChatBox
+        messages={messages}
+        isLoading={isLoading}
+        onSuggestionClick={handleSend}
+      />
+
+      <ChatInput
+        onSend={handleSend}
+        isLoading={isLoading}
+        onClear={handleClear}
+        hasMessages={messages.length > 0}
+      />
+    </>
+  )}
+
+  {activeView === "knowledge-base" && (
+    <KnowledgeBase />
+  )}
+
+  {activeView === "documents" && (
+    <div className="coming-soon-page">
+      <h2>Documents</h2>
+      <p>This module will be implemented in the next phase.</p>
+    </div>
+  )}
+
+  {activeView === "analytics" && (
+    <div className="coming-soon-page">
+      <h2>Analytics</h2>
+      <p>This module will be implemented in the next phase.</p>
+    </div>
+  )}
+
+  {activeView === "settings" && (
+    <div className="coming-soon-page">
+      <h2>Settings</h2>
+      <p>This module will be implemented in the next phase.</p>
+    </div>
+  )}
+
+</main>
       </div>
     </div>
   );

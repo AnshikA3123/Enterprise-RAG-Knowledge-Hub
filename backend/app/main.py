@@ -6,6 +6,9 @@ from app.database.database import engine
 from app.api.message import router as message_router
 # Import models so SQLAlchemy creates tables
 from app.models import conversation
+from app.routers.dashboard import router as dashboard_router
+from app.routers.knowledge import router as knowledge_router
+
 
 # Routers
 from app.api.chat import router as chat_router
@@ -45,6 +48,8 @@ app.add_middleware(
 app.include_router(chat_router)
 app.include_router(message_router)
 app.include_router(conversation_router)
+app.include_router(dashboard_router)
+app.include_router(knowledge_router)
 
 # ------------------------
 # Health Check
