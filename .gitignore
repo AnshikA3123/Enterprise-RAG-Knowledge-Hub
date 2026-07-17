@@ -1,0 +1,59 @@
+# ===========================
+# Python
+# ===========================
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Environment Variables
+.env
+.env.*
+
+# Databases
+*.db
+*.sqlite3
+
+# Python cache
+.pytest_cache/
+.mypy_cache/
+
+# ===========================
+# Node / React
+# ===========================
+node_modules/
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# ===========================
+# IDE
+# ===========================
+.vscode/
+.idea/
+
+# ===========================
+# OS
+# ===========================
+.DS_Store
+Thumbs.db
+
+# ===========================
+# Misc
+# ===========================
+coverage/
+
+# ===========================
+# Qdrant Local Database
+# ===========================
+vector_db/
+
+# Local uploaded/generated data (optional)
+uploads/
+
+# Python environment
+.python-version
