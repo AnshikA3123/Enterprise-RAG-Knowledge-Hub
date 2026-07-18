@@ -10,6 +10,7 @@ from app.routers.dashboard import router as dashboard_router
 from app.routers.knowledge import router as knowledge_router
 from app.routers.insights import router as insights_router
 from app.routers.analytics import router as analytics_router
+from app.routers import settings
 
 
 
@@ -55,6 +56,7 @@ app.include_router(dashboard_router)
 app.include_router(knowledge_router)
 app.include_router(insights_router)
 app.include_router(analytics_router)
+app.include_router(settings.router)
 # ------------------------
 # Health Check
 # ------------------------

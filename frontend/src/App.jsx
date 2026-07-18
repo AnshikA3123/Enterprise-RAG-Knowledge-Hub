@@ -9,6 +9,7 @@ import Dashboard from "./pages/Dashboard";
 import KnowledgeBase from "./pages/KnowledgeBase";
 import AIInsights from "./pages/AIInsights";
 import Analytics from "./pages/Analytics";
+import Settings from "./pages/Settings";
 import {
   getConversations,
   getConversationMessages,
@@ -188,12 +189,8 @@ function App() {
   <Analytics />
 )}
   {activeView === "settings" && (
-    <div className="coming-soon-page">
-      <h2>Settings</h2>
-      <p>This module will be implemented in the next phase.</p>
-    </div>
-  )}
-
+  <Settings />
+)}
 </main>
       </div>
     </div>
