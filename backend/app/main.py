@@ -8,6 +8,9 @@ from app.api.message import router as message_router
 from app.models import conversation
 from app.routers.dashboard import router as dashboard_router
 from app.routers.knowledge import router as knowledge_router
+from app.routers.insights import router as insights_router
+from app.routers.analytics import router as analytics_router
+
 
 
 # Routers
@@ -50,7 +53,8 @@ app.include_router(message_router)
 app.include_router(conversation_router)
 app.include_router(dashboard_router)
 app.include_router(knowledge_router)
-
+app.include_router(insights_router)
+app.include_router(analytics_router)
 # ------------------------
 # Health Check
 # ------------------------

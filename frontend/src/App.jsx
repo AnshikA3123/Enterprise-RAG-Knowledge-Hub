@@ -7,6 +7,8 @@ import { sendChatMessage, checkSystemHealth } from "./services/api";
 import "./styles/App.css";
 import Dashboard from "./pages/Dashboard";
 import KnowledgeBase from "./pages/KnowledgeBase";
+import AIInsights from "./pages/AIInsights";
+import Analytics from "./pages/Analytics";
 import {
   getConversations,
   getConversationMessages,
@@ -16,7 +18,7 @@ const VIEW_LABELS = {
   dashboard: "Overview of your enterprise knowledge operations",
   chat: "Ask questions grounded in your organization's documents",
   "knowledge-base": "Manage vector collections and embeddings",
-  documents: "Browse and manage ingested source documents",
+  insights: "AI infrastructure, knowledge base health and system insights",
   analytics: "Usage, latency, and retrieval quality metrics",
   settings: "Configure models, retrieval, and access controls",
 };
@@ -178,20 +180,13 @@ function App() {
     <KnowledgeBase />
   )}
 
-  {activeView === "documents" && (
-    <div className="coming-soon-page">
-      <h2>Documents</h2>
-      <p>This module will be implemented in the next phase.</p>
-    </div>
-  )}
+  {activeView === "insights" && (
+  <AIInsights />
+)}
 
   {activeView === "analytics" && (
-    <div className="coming-soon-page">
-      <h2>Analytics</h2>
-      <p>This module will be implemented in the next phase.</p>
-    </div>
-  )}
-
+  <Analytics />
+)}
   {activeView === "settings" && (
     <div className="coming-soon-page">
       <h2>Settings</h2>

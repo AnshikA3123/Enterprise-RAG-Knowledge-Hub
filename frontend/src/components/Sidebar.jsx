@@ -15,7 +15,7 @@ const NAV_ITEMS = [
   { key: "dashboard", label: "Dashboard", icon: HiOutlineSquares2X2 },
   { key: "chat", label: "AI Chat", icon: HiOutlineChatBubbleLeftRight },
   { key: "knowledge-base", label: "Knowledge Base", icon: HiOutlineCircleStack },
-  { key: "documents", label: "Documents", icon: HiOutlineDocumentText },
+  { key: "insights", label: "AI Insights", icon: HiOutlineDocumentText },
   { key: "analytics", label: "Analytics", icon: HiOutlineChartBar },
   { key: "settings", label: "Settings", icon: HiOutlineCog6Tooth },
 ];
