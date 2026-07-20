@@ -72,34 +72,64 @@ function App() {
   
 
   const handleSend = useCallback(async (question) => {
-    const userMessage = { id: nextMessageId(), role: "user", content: question };
+    const userMessage = {
+      id: nextMessageId(),
+      role: "user",
+      content: question,
+    };
+
     setMessages((prev) => [...prev, userMessage]);
     setIsLoading(true);
 
     try {
-      const data = await sendChatMessage(question);
+      const data = await sendChatMessage(
+        question,
+        selectedConversation
+      );
+
+      // If backend created a new conversation,
+      // remember it and refresh sidebar.
+      if (!selectedConversation && data.conversation_id) {
+        setSelectedConversation(data.conversation_id);
+
+        const updatedConversations = await getConversations();
+        setConversations(updatedConversations);
+      }
+
       const aiMessage = {
         id: nextMessageId(),
         role: "assistant",
-        content: data?.answer ?? "No answer was returned by the knowledge base.",
+        content:
+          data?.answer ??
+          "No answer was returned by the knowledge base.",
         sources: data?.sources ?? [],
       };
+
       setMessages((prev) => [...prev, aiMessage]);
+
       setIsBackendOnline(true);
+
     } catch (error) {
+
       const errorMessage = {
         id: nextMessageId(),
         role: "assistant",
         content:
-          "I couldn't reach the Enterprise AI Knowledge Hub backend at `http://127.0.0.1:8000`. Confirm the FastAPI service is running and try again.",
+          "I couldn't reach the Enterprise AI Knowledge Hub backend at http://127.0.0.1:8000. Confirm the FastAPI service is running and try again.",
         isError: true,
       };
+
       setMessages((prev) => [...prev, errorMessage]);
+
       setIsBackendOnline(false);
+
     } finally {
+
       setIsLoading(false);
+
     }
-  }, []);
+
+  }, [selectedConversation]);
   const loadConversation = useCallback(async (conversationId) => {
   try {
     const data = await getConversationMessages(conversationId);
@@ -123,6 +153,7 @@ function App() {
 
   const handleClear = useCallback(() => {
     setMessages([]);
+    setSelectedConversation(null);
   }, []);
 
   const handleNavigate = useCallback((view) => {

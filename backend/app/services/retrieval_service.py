@@ -12,15 +12,20 @@ class RetrievalService:
         # Enterprise LLM Manager
         self.llm = LLMManager()
 
-    def ask(self, question: str):
+    def ask(
+        self,
+        question: str,
+        conversation_history: str = ""
+    ):
 
         # Retrieve top documents
         results = self.retriever.search(question)
 
         # Build Prompt
         prompt = PromptBuilder.build(
-            question,
-            results
+            question=question,
+            retrieved_chunks=results,
+            conversation_history=conversation_history,
         )
 
         # Generate answer using Enterprise LLM Manager

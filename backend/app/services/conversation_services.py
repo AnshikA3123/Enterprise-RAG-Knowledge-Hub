@@ -11,6 +11,10 @@ class ConversationService:
 
         return self.repo.create(title)
 
+    def get_conversation(self, conversation_id):
+
+        return self.repo.get(conversation_id)
+
     def get_all_conversations(self):
 
         return self.repo.get_all()

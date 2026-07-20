@@ -14,6 +14,7 @@ from app.schemas.chat import (
 from app.services.retrieval_service import RetrievalService
 from app.services.conversation_services import ConversationService
 from app.services.message_service import MessageService
+from app.services.conversation_memory_service import ConversationMemoryService
 
 import json
 
@@ -33,25 +34,58 @@ def chat(
 
     conversation_service = ConversationService(db)
     message_service = MessageService(db)
+    memory_service = ConversationMemoryService(db)
 
-    # Generate conversation title from first question
-    title = request.question[:40]
+    # --------------------------------------------------
+    # Continue existing conversation OR create new one
+    # --------------------------------------------------
 
-    # Create conversation
-    conversation = conversation_service.create_conversation(title)
+    if request.conversation_id:
 
-    # Save user message
+        conversation = conversation_service.get_conversation(
+            request.conversation_id
+        )
+
+        if conversation is None:
+
+            title = request.question[:40]
+
+            conversation = conversation_service.create_conversation(
+                title
+            )
+
+    else:
+
+        title = request.question[:40]
+
+        conversation = conversation_service.create_conversation(
+            title
+        )
+
+    # ------------------------------------
+    # Load previous conversation history
+    # ------------------------------------
+
+    conversation_history = memory_service.build_history(
+        conversation.id
+    )
+
+    # Save current user message
+
     message_service.save_user_message(
         conversation.id,
         request.question
     )
 
-    # Ask RAG
+    # Ask RAG with memory
+
     result = service.ask(
-        request.question
+        question=request.question,
+        conversation_history=conversation_history
     )
 
     # Save AI response
+
     message_service.save_ai_message(
         conversation.id,
         result["answer"],
@@ -59,6 +93,7 @@ def chat(
     )
 
     return ChatResponse(
+        conversation_id=conversation.id,
         answer=result["answer"],
         sources=[
             Source(

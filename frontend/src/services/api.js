@@ -11,21 +11,30 @@ const client = axios.create({
 });
 
 /**
- * Sends a question to the Enterprise AI Knowledge Hub backend and
- * returns the grounded answer along with its source citations.
- * @param {string} question
- * @returns {Promise<{answer: string, sources: Array<{file: string, page: number}>}>}
+ * Send a chat message.
+ * If conversationId is null, backend creates a new conversation.
+ * Otherwise, backend continues the existing conversation.
  */
-export async function sendChatMessage(question) {
-  const response = await client.post("/chat", { question });
+export async function sendChatMessage(
+  question,
+  conversationId = null
+) {
+  const response = await client.post("/chat", {
+    question,
+    conversation_id: conversationId,
+  });
+
   return response.data;
 }
 
 export async function checkSystemHealth() {
   try {
-    const response = await client.get("/", { timeout: 4000 });
+    const response = await client.get("/", {
+      timeout: 4000,
+    });
+
     return response.status === 200;
-  } catch (error) {
+  } catch {
     return false;
   }
 }
