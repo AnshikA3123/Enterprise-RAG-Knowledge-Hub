@@ -11,6 +11,9 @@ from app.routers.knowledge import router as knowledge_router
 from app.routers.insights import router as insights_router
 from app.routers.analytics import router as analytics_router
 from app.routers import settings
+from app.api.slack import router as slack_router
+from app.models import conversation
+from app.models import slack_conversation
 
 
 
@@ -57,6 +60,7 @@ app.include_router(knowledge_router)
 app.include_router(insights_router)
 app.include_router(analytics_router)
 app.include_router(settings.router)
+app.include_router(slack_router)
 # ------------------------
 # Health Check
 # ------------------------
