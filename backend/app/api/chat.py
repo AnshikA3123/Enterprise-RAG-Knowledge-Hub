@@ -20,7 +20,7 @@ import json
 
 router = APIRouter()
 
-service = RetrievalService()
+
 
 
 @router.post(
@@ -78,6 +78,7 @@ def chat(
     )
 
     # Ask RAG with memory
+    service = RetrievalService()
 
     result = service.ask(
         question=request.question,
