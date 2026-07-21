@@ -1,4 +1,4 @@
-# 🚀 Enterprise AI Knowledge Hub with Slack Intergration and Multi LLM provider
+# Enterprise AI Knowledge Hub with Slack Intergration and Multi LLM provider
 
 > Enterprise-grade Retrieval-Augmented Generation (RAG) platform built using FastAPI, LangChain, Qdrant, React, Docker, and Slack Integration.
 
@@ -18,7 +18,7 @@
 - ⚡ FastAPI + React + Docker Architecture
 - 🏢 Department-wise Enterprise Knowledge Management
 
-## 📌 Overview
+##  Overview
 
 Enterprise AI Knowledge Hub is a production-style **Retrieval-Augmented Generation (RAG)** platform designed to enable organizations to securely query enterprise knowledge using natural language. Instead of relying solely on a Large Language Model's pre-trained knowledge, the system retrieves relevant company documents from a vector database and augments the LLM with real organizational context before generating responses.
 
@@ -34,9 +34,9 @@ Overall, the project demonstrates the practical implementation of modern Generat
 
 ---
 
-# ✨ Features
+#  Features
 
-### 🤖 Enterprise RAG Chat
+### Enterprise RAG Chat
 
 -  Retrieval-Augmented Generation (RAG)
 - Multi-turn contextual conversations
@@ -80,7 +80,7 @@ Interactive analytics showing
 
 ---
 
-### 💡 AI Insights
+###  AI Insights
 
 Real-time infrastructure monitoring
 
@@ -95,7 +95,7 @@ Displays
 
 ---
 
-### ⚙️  Multi-LLM Configuration
+###   Multi-LLM Configuration
 
 - Google Gemini 2.0 Flash
 - Groq LLM Integration
@@ -283,43 +283,46 @@ Enterprise-AI-Knowledge-Hub/
 
 ## Dashboard
 
->![alt text](image.png)
-![alt text](image-1.png)
-![alt text](image-13.png)
-
+>
+![Dashboard](screenshots/image.png)
+![Dashboard](screenshots/image1.png)
 ---
 
 ## AI Chat
-![alt text](image-2.png)
-> 
+!![AI Chat](screenshots/image2.png)
+
 
 ---
 
 ## Knowledge Base
 
-> ![alt text](image-3.png)
-![alt text](image-4.png)
----
+![Knowledge Base](screenshots/image3.png)
+[Knowledge Base](screenshots/image4.png)
+
+
 
 ## Analytics
-![alt text](image-7.png)
+![Analytics](screenshots/image5.png)
+![Analytics](screenshots/image6.png)
+![Analytics](screenshots/image7.png)
+![Analytics](screenshots/image8.png)
 
-> ![alt text](image-8.png)
-![alt text](image-9.png)
-![alt text](image-10.png)
----
 
 ## AI Insights
 
->  ![alt text](image-5.png)
-![alt text](image-6.png)
-![alt text](image-11.png)
-
+> ![AI Insights](screenshots/image9.png)
+![AI Insights](screenshots/image10.png)
+![AI Insights](screenshots/image11.png)
 ---
 
 ## Slack Bot
 
-> ![alt text](image-12.png)
+>![Slack Bot](screenshots/image12.png)
+
+## Settings
+![Settings](screenshots/image13.png)
+![Settings](screenshots/image14.png)
+![Settings](screenshots/image15.png)
 
 ---
 
