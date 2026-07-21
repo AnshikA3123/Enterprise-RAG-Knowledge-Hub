@@ -9,13 +9,28 @@ class Retriever:
 
         self.vector_store = VectorStore()
 
-        self.model = SentenceTransformer(
-            "BAAI/bge-small-en-v1.5"
-        )
+        # Lazy loading (prevents loading at server startup)
+        self.model = None
+
+    def _get_model(self):
+
+        if self.model is None:
+
+            print("\nLoading Embedding Model...\n")
+
+            self.model = SentenceTransformer(
+                "BAAI/bge-small-en-v1.5"
+            )
+
+            print("Embedding Model Loaded Successfully.\n")
+
+        return self.model
 
     def search(self, question: str, limit: int = 5):
 
-        query_embedding = self.model.encode(
+        model = self._get_model()
+
+        query_embedding = model.encode(
             question,
             normalize_embeddings=True,
         ).tolist()
