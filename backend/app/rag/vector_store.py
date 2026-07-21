@@ -1,3 +1,11 @@
+import os
+
+from dotenv import load_dotenv
+
+
+
+
+load_dotenv()
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams, PointStruct
 
@@ -10,9 +18,9 @@ class VectorStore:
 
     def __init__(self):
         self.client = QdrantClient(
-            host="localhost",
-            port=6333,
-        )
+    url=os.getenv("QDRANT_URL"),
+    api_key=os.getenv("QDRANT_API_KEY"),
+)
 
     def create_collection(self):
 
@@ -45,7 +53,7 @@ class VectorStore:
 
         print("Uploading Vectors to Qdrant...\n")
 
-        BATCH_SIZE = 100
+        BATCH_SIZE = 50
 
         total = len(documents)
 
@@ -73,10 +81,10 @@ class VectorStore:
                 )
 
             self.client.upsert(
-                collection_name=self.COLLECTION_NAME,
-                points=points,
-                wait=True,
-            )
+    collection_name=self.COLLECTION_NAME,
+    points=points,
+    wait=False,
+)
 
             print(f"Uploaded {end}/{total} vectors")
 
