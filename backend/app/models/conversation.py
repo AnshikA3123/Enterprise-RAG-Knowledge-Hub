@@ -29,8 +29,8 @@ class Conversation(Base):
         onupdate=datetime.utcnow
     )
     from sqlalchemy import ForeignKey
-from sqlalchemy.orm import relationship
-from sqlalchemy import Text
+    from sqlalchemy.orm import relationship
+    from sqlalchemy import Text
 
 
 class Message(Base):

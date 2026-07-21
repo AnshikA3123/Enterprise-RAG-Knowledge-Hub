@@ -1,9 +1,4 @@
-/* ==================================================================
-   Analytics.css
-   Enterprise AI Knowledge Hub — Analytics page
-   Scoped entirely under .analytics-page so it cannot leak into
-   Dashboard, KnowledgeBase, AIInsights or shared chrome (Sidebar/Header).
-================================================================== */
+
 
 
 .analytics-page {
