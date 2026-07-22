@@ -115,7 +115,7 @@ function App() {
         id: nextMessageId(),
         role: "assistant",
         content:
-          "I couldn't reach the Enterprise AI Knowledge Hub backend at http://127.0.0.1:8000. Confirm the FastAPI service is running and try again.",
+  `I couldn't reach the Enterprise AI Knowledge Hub backend (${import.meta.env.VITE_API_URL}). Confirm the backend is running and try again.`,
         isError: true,
       };
 
