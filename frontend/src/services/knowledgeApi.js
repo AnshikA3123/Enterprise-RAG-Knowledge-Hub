@@ -1,7 +1,9 @@
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 export async function getKnowledgeBase() {
-  const response = await fetch(`${API_BASE}/knowledge-base`);
+  const response = await fetch(
+    `${API_BASE_URL}/knowledge-base`
+  );
 
   if (!response.ok) {
     throw new Error("Failed to load Knowledge Base.");
