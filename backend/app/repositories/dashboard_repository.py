@@ -1,13 +1,8 @@
-from pathlib import Path
-
-from pathlib import Path
-
 from sqlalchemy.orm import Session
 
 from app.models.conversation import Conversation
 from app.rag.vector_store import VectorStore
-
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
+from app.repositories.knowledge_repository import KnowledgeRepository
 
 
 class DashboardRepository:
@@ -18,28 +13,11 @@ class DashboardRepository:
 
     def get_dashboard_stats(self):
 
-        kb_path = PROJECT_ROOT / "knowledge_base"
+        # Reuse the same repository that powers the Knowledge Base page.
+        knowledge = KnowledgeRepository(self.db).get_knowledge_base()
 
-        departments = 0
-        documents = 0
-
-        if kb_path.exists():
-
-            departments = len(
-                [d for d in kb_path.iterdir() if d.is_dir()]
-            )
-
-            for department in kb_path.iterdir():
-
-                if department.is_dir():
-
-                    documents += len(
-                        [
-                            file
-                            for file in department.iterdir()
-                            if file.is_file()
-                        ]
-                    )
+        departments = len(knowledge["departments"])
+        documents = len(knowledge["documents"])
 
         collection = self.vector_store.client.get_collection(
             collection_name=self.vector_store.COLLECTION_NAME
